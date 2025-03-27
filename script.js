@@ -4,7 +4,7 @@ const output = document.getElementById("output");
 
 const numconvertido = [];
 
-const romanos = {
+const romanosUnoDiez = {
   1: "I",
   2: "II",
   3: "III",
@@ -15,15 +15,35 @@ const romanos = {
   8: "VIII",
   9: "IX",
   10: "X",
+};
+const romanosDecenas = {
+  20: "XX",
+  30: "XXX",
   40: "XL",
   50: "L",
-  90: "XC",
+  60: "LX",
+  70: "LXX",
+  80: "LXXX",
+  90: "XC"
+}
+
+const romanosCentenas = {
   100: "C",
+  200: "CC",
+  300: "CCC",
   400: "CD",
   500: "D",
-  900: "CM",
+  600: "DC",
+  700: "DCC",
+  800: "DCCC",
+  900: "CM"
+}
+
+const romanosMillares = {
   1000: "M",
-};
+  2000: "MM",
+  3000: "MMM"
+}
 
 const cleanInput = (input) => {
   if (!input) {
