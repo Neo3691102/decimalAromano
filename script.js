@@ -115,6 +115,37 @@ numberInput.addEventListener("keydown", (e) => {
         }
       }
     }
+
+    if(arrNumLim.length > 0 && arrNumLim.length <= 3){
+      console.log("numero de tres digitos");
+      arrUnidades.push(arrNumLim[2]);
+      arrDecenas.push(arrNumLim[1]); 
+      const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
+      arrCentenas.push(arrNumLim[0]);
+      const arrCentenas2 = arrCentenas.map((numero) => parseInt(numero) * 100);
+
+      for(const romano in romanosCentenas){
+        if(romano === arrCentenas2[0].toString()){
+          numconvertido.push(romanosCentenas[romano]);
+        }
+      }
+
+      for (const romano in romanosDecenas) {
+        if (romano === arrDecenas2[0].toString()) {
+          numconvertido.push(romanosDecenas[romano]);
+        }
+      }
+
+      for (const romano in romanosUnoNueve) {
+        if (romano === arrUnidades[0].toString()) {
+          numconvertido.push(romanosUnoNueve[romano]);
+        }
+      }
+
+    }
+
+
+
     console.log(numconvertido);
     const romanoFinal = numconvertido.join("");
     output.textContent = romanoFinal;
