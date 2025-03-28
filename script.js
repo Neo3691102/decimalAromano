@@ -82,8 +82,98 @@ convertBtn.addEventListener("click", () => {
   const numLimpio = cleanInput(numberInput.value);
   console.log(numLimpio);
 
-  const numLimToStr = numLimpio.toString();
-  console.log(numLimToStr);
+  const numLimToStr = numLimpio.toString(); //convierte numLimpio en cadena para poder manipular
+
+  const arrNumLim = numLimToStr.split(""); //convertimos numLimToStr a un array
+  console.log(arrNumLim);
+
+  //si el numero es de dos digitos
+  if (arrNumLim.length > 0 && arrNumLim.length <= 2) {
+    console.log("numero de dos digitos");
+    arrUnidades.push(arrNumLim[1]);
+    arrDecenas.push(arrNumLim[0]);
+    const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
+    console.log(arrDecenas2);
+    for (const romano in romanosDecenas) {
+      if (romano === arrDecenas2[0].toString()) {
+        numconvertido.push(romanosDecenas[romano]);
+      }
+    }
+
+    for (const romano in romanosUnoNueve) {
+      if (romano === arrUnidades[0].toString()) {
+        numconvertido.push(romanosUnoNueve[romano]);
+      }
+    }
+  }
+  //si el numero es de tres digitos
+  if (arrNumLim.length > 0 && arrNumLim.length <= 3) {
+    console.log("numero de tres digitos");
+    arrUnidades.push(arrNumLim[2]);
+    arrDecenas.push(arrNumLim[1]);
+    const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
+    arrCentenas.push(arrNumLim[0]);
+    const arrCentenas2 = arrCentenas.map((numero) => parseInt(numero) * 100);
+
+    for (const romano in romanosCentenas) {
+      if (romano === arrCentenas2[0].toString()) {
+        numconvertido.push(romanosCentenas[romano]);
+      }
+    }
+
+    for (const romano in romanosDecenas) {
+      if (romano === arrDecenas2[0].toString()) {
+        numconvertido.push(romanosDecenas[romano]);
+      }
+    }
+
+    for (const romano in romanosUnoNueve) {
+      if (romano === arrUnidades[0].toString()) {
+        numconvertido.push(romanosUnoNueve[romano]);
+      }
+    }
+  }
+  //si el numero es de cuatro digitos
+  if (arrNumLim.length > 0 && arrNumLim.length <= 4) {
+    arrUnidades.push(arrNumLim[3]);
+    arrDecenas.push(arrNumLim[2]);
+    arrCentenas.push(arrNumLim[1]);
+    arrMillares.push(arrNumLim[0]);
+
+    const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
+    const arrCentenas2 = arrCentenas.map((numero) => parseInt(numero) * 100);
+    const arrMillares2 = arrMillares.map((numero) => parseInt(numero) * 1000);
+
+    for (const romano in romanosMillares) {
+      if (romano === arrMillares2[0].toString()) {
+        numconvertido.push(romanosMillares[romano]);
+      }
+    }
+
+    for (const romano in romanosCentenas) {
+      if (romano === arrCentenas2[0].toString()) {
+        numconvertido.push(romanosCentenas[romano]);
+      }
+    }
+
+    for (const romano in romanosDecenas) {
+      if (romano === arrDecenas2[0].toString()) {
+        numconvertido.push(romanosDecenas[romano]);
+      }
+    }
+
+    for (const romano in romanosUnoNueve) {
+      if (romano === arrUnidades[0].toString()) {
+        numconvertido.push(romanosUnoNueve[romano]);
+      }
+    }
+  }
+
+  console.log(numconvertido);
+  const romanoFinal = numconvertido.join("");
+  output.textContent = romanoFinal;
+  numberInput.value = "";
+  reset();
 });
 
 numberInput.addEventListener("keydown", (e) => {
@@ -115,17 +205,17 @@ numberInput.addEventListener("keydown", (e) => {
         }
       }
     }
-
-    if(arrNumLim.length > 0 && arrNumLim.length <= 3){
+    //si el numero es de tres digitos
+    if (arrNumLim.length > 0 && arrNumLim.length <= 3) {
       console.log("numero de tres digitos");
       arrUnidades.push(arrNumLim[2]);
-      arrDecenas.push(arrNumLim[1]); 
+      arrDecenas.push(arrNumLim[1]);
       const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
       arrCentenas.push(arrNumLim[0]);
       const arrCentenas2 = arrCentenas.map((numero) => parseInt(numero) * 100);
 
-      for(const romano in romanosCentenas){
-        if(romano === arrCentenas2[0].toString()){
+      for (const romano in romanosCentenas) {
+        if (romano === arrCentenas2[0].toString()) {
           numconvertido.push(romanosCentenas[romano]);
         }
       }
@@ -141,10 +231,42 @@ numberInput.addEventListener("keydown", (e) => {
           numconvertido.push(romanosUnoNueve[romano]);
         }
       }
-
     }
+    //si el numero es de cuatro digitos
+    if (arrNumLim.length > 0 && arrNumLim.length <= 4) {
+      arrUnidades.push(arrNumLim[3]);
+      arrDecenas.push(arrNumLim[2]);
+      arrCentenas.push(arrNumLim[1]);
+      arrMillares.push(arrNumLim[0]);
 
+      const arrDecenas2 = arrDecenas.map((numero) => parseInt(numero) * 10);
+      const arrCentenas2 = arrCentenas.map((numero) => parseInt(numero) * 100);
+      const arrMillares2 = arrMillares.map((numero) => parseInt(numero) * 1000);
 
+      for (const romano in romanosMillares) {
+        if (romano === arrMillares2[0].toString()) {
+          numconvertido.push(romanosMillares[romano]);
+        }
+      }
+
+      for (const romano in romanosCentenas) {
+        if (romano === arrCentenas2[0].toString()) {
+          numconvertido.push(romanosCentenas[romano]);
+        }
+      }
+
+      for (const romano in romanosDecenas) {
+        if (romano === arrDecenas2[0].toString()) {
+          numconvertido.push(romanosDecenas[romano]);
+        }
+      }
+
+      for (const romano in romanosUnoNueve) {
+        if (romano === arrUnidades[0].toString()) {
+          numconvertido.push(romanosUnoNueve[romano]);
+        }
+      }
+    }
 
     console.log(numconvertido);
     const romanoFinal = numconvertido.join("");
